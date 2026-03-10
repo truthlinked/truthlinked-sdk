@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["call_contract","call_contract_with_value"],"type":["AccountId"]};

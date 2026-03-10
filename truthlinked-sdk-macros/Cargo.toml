@@ -1,0 +1,20 @@
+[package]
+name = "truthlinked-sdk-macros"
+version.workspace = true
+edition.workspace = true
+description = "Procedural macros for truthlinked-sdk"
+license.workspace = true
+rust-version.workspace = true
+readme = "README.md"
+documentation = "https://docs.rs/truthlinked-sdk-macros"
+homepage = "https://github.com/truth-linked/truthlinked-sdk"
+repository = "https://github.com/truth-linked/truthlinked-sdk"
+keywords = ["blockchain", "smart-contract", "wasm", "macros", "truthlinked"]
+
+[lib]
+proc-macro = true
+
+[dependencies]
+proc-macro2.workspace = true
+quote.workspace = true
+syn.workspace = true

@@ -1,0 +1,24 @@
+[package]
+name = "truthlinked-sdk"
+version.workspace = true
+edition.workspace = true
+description = "TruthLinked smart-contract SDK"
+license.workspace = true
+rust-version.workspace = true
+readme = "README.md"
+documentation = "https://docs.rs/truthlinked-sdk"
+homepage = "https://github.com/truth-linked/truthlinked-sdk"
+repository = "https://github.com/truth-linked/truthlinked-sdk"
+keywords = ["blockchain", "smart-contract", "wasm", "sdk", "truthlinked"]
+
+[lib]
+crate-type = ["rlib"]
+
+[features]
+default = []
+testing = []
+
+[dependencies]
+sha2.workspace = true
+blake3.workspace = true
+truthlinked-sdk-macros.workspace = true

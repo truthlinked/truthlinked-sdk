@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["namespace","slot_for","slot_for_parts"],"struct":["Slot"]};

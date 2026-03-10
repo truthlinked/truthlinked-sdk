@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["block_height","block_timestamp","call_value","calldata","caller","contract_id","owner","set_return_data"],"type":["AccountId"]};

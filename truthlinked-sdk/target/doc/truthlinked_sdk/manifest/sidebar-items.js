@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["manifest_of"],"struct":["ContractManifest","ManifestBuilder","StorageKeySpec"],"trait":["Manifest"]};

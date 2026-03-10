@@ -1,0 +1,45 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Serialization and deserialization traits and utilities."><title>truthlinked_sdk::codec - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-e56847b5.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="truthlinked_sdk" data-themes="" data-resource-suffix="" data-rustdoc-version="1.91.1 (ed61e7d7e 2025-11-07)" data-channel="1.91.1" data-search-js="search-e256b49e.js" data-stringdex-js="stringdex-c3e638e9.js" data-settings-js="settings-c38705f0.js" ><script src="../../static.files/storage-e2aeef58.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../static.files/main-6dc2a7f3.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-263c88ec.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module codec</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../truthlinked_sdk/index.html">truthlinked_<wbr>sdk</a><span class="version">0.1.0</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module codec</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#codec32---fixed-size-storage" title="Codec32 - Fixed-Size Storage">Codec32 - Fixed-Size Storage</a></li><li><a href="#bytescodec---variable-length-encoding" title="BytesCodec - Variable-Length Encoding">BytesCodec - Variable-Length Encoding</a></li><li><a href="#encoderdecoder---builder-pattern" title="Encoder/Decoder - Builder Pattern">Encoder/Decoder - Builder Pattern</a></li></ul><h3><a href="#structs">Module Items</a></h3><ul class="block"><li><a href="#structs" title="Structs">Structs</a></li><li><a href="#constants" title="Constants">Constants</a></li><li><a href="#traits" title="Traits">Traits</a></li></ul></section><div id="rustdoc-modnav"><h2 class="in-crate"><a href="../index.html">In crate truthlinked_<wbr>sdk</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../index.html">truthlinked_sdk</a></div><h1>Module <span>codec</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../src/truthlinked_sdk/codec.rs.html#1-640">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Serialization and deserialization traits and utilities.</p>
+<p>This module provides two encoding strategies for contract data:</p>
+<ul>
+<li><strong><code>Codec32</code></strong>: Fixed 32-byte encoding for storage slots</li>
+<li><strong><code>BytesCodec</code></strong>: Variable-length encoding for complex types</li>
+</ul>
+<p>Both traits support <code>#[derive]</code> macros for automatic implementation.</p>
+<h2 id="codec32---fixed-size-storage"><a class="doc-anchor" href="#codec32---fixed-size-storage">§</a>Codec32 - Fixed-Size Storage</h2>
+<p>Used for values stored in 32-byte storage slots. All primitive integers,
+booleans, and 32-byte arrays implement this trait.</p>
+
+<div class="example-wrap ignore"><a href="#" class="tooltip" title="This example is not tested">ⓘ</a><pre class="rust rust-example-rendered"><code><span class="kw">use </span>truthlinked_sdk::codec::Codec32;
+
+<span class="kw">let </span>value = <span class="number">42u64</span>;
+<span class="kw">let </span>encoded = value.encode_32(); <span class="comment">// [42, 0, 0, ..., 0] (32 bytes)
+</span><span class="kw">let </span>decoded = u64::decode_32(<span class="kw-2">&amp;</span>encoded)<span class="question-mark">?</span>; <span class="comment">// 42</span></code></pre></div><h2 id="bytescodec---variable-length-encoding"><a class="doc-anchor" href="#bytescodec---variable-length-encoding">§</a>BytesCodec - Variable-Length Encoding</h2>
+<p>Used for complex types, strings, and variable-length data. Supports
+automatic derivation for structs and enums.</p>
+
+<div class="example-wrap ignore"><a href="#" class="tooltip" title="This example is not tested">ⓘ</a><pre class="rust rust-example-rendered"><code><span class="attr">#[derive(BytesCodec)]
+</span><span class="kw">struct </span>Transfer {
+    to: [u8; <span class="number">32</span>],
+    amount: u64,
+}
+
+<span class="kw">let </span>transfer = Transfer { to: [<span class="number">0</span>; <span class="number">32</span>], amount: <span class="number">100 </span>};
+<span class="kw">let </span>bytes = transfer.encode_bytes();
+<span class="kw">let </span>decoded = Transfer::decode_bytes(<span class="kw-2">&amp;</span>bytes)<span class="question-mark">?</span>;</code></pre></div><h2 id="encoderdecoder---builder-pattern"><a class="doc-anchor" href="#encoderdecoder---builder-pattern">§</a>Encoder/Decoder - Builder Pattern</h2>
+<p>For manual encoding of complex types:</p>
+
+<div class="example-wrap ignore"><a href="#" class="tooltip" title="This example is not tested">ⓘ</a><pre class="rust rust-example-rendered"><code><span class="kw">use </span>truthlinked_sdk::codec::{Encoder, Decoder};
+
+<span class="comment">// Encoding
+</span><span class="kw">let </span><span class="kw-2">mut </span>enc = Encoder::new();
+enc.push_u64(<span class="number">42</span>);
+enc.push_string(<span class="string">"hello"</span>);
+enc.push_bool(<span class="bool-val">true</span>);
+<span class="kw">let </span>bytes = enc.into_vec();
+
+<span class="comment">// Decoding
+</span><span class="kw">let </span><span class="kw-2">mut </span>dec = Decoder::new(<span class="kw-2">&amp;</span>bytes);
+<span class="kw">let </span>num = dec.read_u64()<span class="question-mark">?</span>;
+<span class="kw">let </span>text = dec.read_string()<span class="question-mark">?</span>;
+<span class="kw">let </span>flag = dec.read_bool()<span class="question-mark">?</span>;
+dec.finish()<span class="question-mark">?</span>; <span class="comment">// Ensure all bytes consumed</span></code></pre></div></div></details><h2 id="structs" class="section-header">Structs<a href="#structs" class="anchor">§</a></h2><dl class="item-table"><dt><a class="struct" href="struct.Decoder.html" title="struct truthlinked_sdk::codec::Decoder">Decoder</a></dt><dd>Parser for decoding values from a byte stream.</dd><dt><a class="struct" href="struct.Encoder.html" title="struct truthlinked_sdk::codec::Encoder">Encoder</a></dt><dd>Builder for encoding multiple values into a byte stream.</dd></dl><h2 id="constants" class="section-header">Constants<a href="#constants" class="anchor">§</a></h2><dl class="item-table"><dt><a class="constant" href="constant.ERR_CODEC.html" title="constant truthlinked_sdk::codec::ERR_CODEC">ERR_<wbr>CODEC</a></dt><dd>Error code for general codec failures.</dd><dt><a class="constant" href="constant.ERR_CODEC_EOF.html" title="constant truthlinked_sdk::codec::ERR_CODEC_EOF">ERR_<wbr>CODEC_<wbr>EOF</a></dt><dd>Error code for unexpected end of input during decoding.</dd><dt><a class="constant" href="constant.ERR_CODEC_UTF8.html" title="constant truthlinked_sdk::codec::ERR_CODEC_UTF8">ERR_<wbr>CODEC_<wbr>UTF8</a></dt><dd>Error code for invalid UTF-8 sequences in string decoding.</dd></dl><h2 id="traits" class="section-header">Traits<a href="#traits" class="anchor">§</a></h2><dl class="item-table"><dt><a class="trait" href="trait.BytesCodec.html" title="trait truthlinked_sdk::codec::BytesCodec">Bytes<wbr>Codec</a></dt><dd>Trait for types that can be encoded/decoded to/from variable-length bytes.</dd><dt><a class="trait" href="trait.Codec32.html" title="trait truthlinked_sdk::codec::Codec32">Codec32</a></dt><dd>Trait for types that can be encoded/decoded to/from 32-byte slots.</dd></dl></section></div></main></body></html>

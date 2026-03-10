@@ -1,0 +1,17 @@
+[package]
+name = "my-truthlinked-contract"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+truthlinked-sdk = "0.1.0"

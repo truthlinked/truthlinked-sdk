@@ -1,0 +1,9 @@
+(function() {
+    var implementors = Object.fromEntries([["truthlinked_sdk",[["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/1.91.1/core/default/trait.Default.html\" title=\"trait core::default::Default\">Default</a> for <a class=\"struct\" href=\"truthlinked_sdk/backend/struct.HostStorage.html\" title=\"struct truthlinked_sdk::backend::HostStorage\">HostStorage</a>"],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/1.91.1/core/default/trait.Default.html\" title=\"trait core::default::Default\">Default</a> for <a class=\"struct\" href=\"truthlinked_sdk/backend/struct.MemoryStorage.html\" title=\"struct truthlinked_sdk::backend::MemoryStorage\">MemoryStorage</a>"],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/1.91.1/core/default/trait.Default.html\" title=\"trait core::default::Default\">Default</a> for <a class=\"struct\" href=\"truthlinked_sdk/codec/struct.Encoder.html\" title=\"struct truthlinked_sdk::codec::Encoder\">Encoder</a>"],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/1.91.1/core/default/trait.Default.html\" title=\"trait core::default::Default\">Default</a> for <a class=\"struct\" href=\"truthlinked_sdk/manifest/struct.ContractManifest.html\" title=\"struct truthlinked_sdk::manifest::ContractManifest\">ContractManifest</a>"],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/1.91.1/core/default/trait.Default.html\" title=\"trait core::default::Default\">Default</a> for <a class=\"struct\" href=\"truthlinked_sdk/manifest/struct.ManifestBuilder.html\" title=\"struct truthlinked_sdk::manifest::ManifestBuilder\">ManifestBuilder</a>"]]]]);
+    if (window.register_implementors) {
+        window.register_implementors(implementors);
+    } else {
+        window.pending_implementors = implementors;
+    }
+})()
+//{"start":57,"fragment_lengths":[1567]}

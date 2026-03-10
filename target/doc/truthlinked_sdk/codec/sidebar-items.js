@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["ERR_CODEC","ERR_CODEC_EOF","ERR_CODEC_UTF8"],"struct":["Decoder","Encoder"],"trait":["BytesCodec","Codec32"]};

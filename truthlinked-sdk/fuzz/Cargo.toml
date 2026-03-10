@@ -1,0 +1,22 @@
+[package]
+name = "truthlinked-sdk-fuzz"
+version = "0.0.1"
+publish = false
+edition = "2021"
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+arbitrary = { version = "1", features = ["derive"] }
+libfuzzer-sys = "0.4"
+truthlinked-sdk = { path = "..", features = ["testing"] }
+
+[[bin]]
+name = "storage_collections"
+path = "fuzz_targets/storage_collections.rs"
+test = false
+doc = false
+
+[workspace]
+members = []
