@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":["decode_event_data","emit","emit_event","event_signature","event_topics_match","indexed_topics","topic_from_bytes"],"mod":["__private"],"trait":["Event","EventData","EventTopic"]};

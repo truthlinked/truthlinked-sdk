@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"struct":["HostStorage","MemoryStorage"],"trait":["StorageBackend"]};
