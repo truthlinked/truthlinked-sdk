@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"attr":["error_code","require"],"derive":["BytesCodec","Codec32","Event","Manifest"],"macro":["contract_entry","slot"],"mod":["abi","backend","call","codec","collections","context","env","error","hashing","log","manifest","oracle","prelude","storage"]};

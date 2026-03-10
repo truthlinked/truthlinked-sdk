@@ -1,1 +1,0 @@
-rd_("otruthlinked_sdk")

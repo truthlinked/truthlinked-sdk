@@ -10,6 +10,10 @@ documentation = "https://docs.rs/truthlinked-sdk-macros"
 homepage = "https://github.com/truth-linked/truthlinked-sdk"
 repository = "https://github.com/truth-linked/truthlinked-sdk"
 keywords = ["blockchain", "smart-contract", "wasm", "macros", "truthlinked"]
+exclude = [
+    "target/**",
+    "Cargo.lock",
+]
 
 [lib]
 proc-macro = true

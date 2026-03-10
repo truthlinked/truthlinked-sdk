@@ -9,7 +9,7 @@ exclude = [
 resolver = "2"
 
 [workspace.package]
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 license = "MIT"
 rust-version = "1.75"
@@ -20,7 +20,7 @@ proc-macro2 = "1.0"
 quote = "1.0"
 sha2 = { version = "0.10", default-features = false }
 syn = { version = "2.0", features = ["full"] }
-truthlinked-sdk-macros = { version = "0.1.0" }
+truthlinked-sdk-macros = { version = "0.1.1" }
 
 [patch.crates-io]
 truthlinked-sdk-macros = { path = "truthlinked-sdk-macros" }

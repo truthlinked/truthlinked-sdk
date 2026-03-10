@@ -1,9 +1,0 @@
-(function() {
-    var implementors = Object.fromEntries([["truthlinked_sdk",[["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/1.91.1/core/cmp/trait.Ord.html\" title=\"trait core::cmp::Ord\">Ord</a> for <a class=\"struct\" href=\"truthlinked_sdk/manifest/struct.StorageKeySpec.html\" title=\"struct truthlinked_sdk::manifest::StorageKeySpec\">StorageKeySpec</a>"]]]]);
-    if (window.register_implementors) {
-        window.register_implementors(implementors);
-    } else {
-        window.pending_implementors = implementors;
-    }
-})()
-//{"start":57,"fragment_lengths":[317]}

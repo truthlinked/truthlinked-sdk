@@ -13,7 +13,7 @@ Rust SDK for writing TruthLinked WASM smart contracts. It is `no_std`, comes wit
 ## Install
 ```toml
 [dependencies]
-truthlinked-sdk = "0.1.0"
+truthlinked-sdk = "0.1.1"
 ```
 
 Target: `wasm32-unknown-unknown` (build with `panic = "abort"`).

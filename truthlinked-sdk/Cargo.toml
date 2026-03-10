@@ -10,6 +10,11 @@ documentation = "https://docs.rs/truthlinked-sdk"
 homepage = "https://github.com/truth-linked/truthlinked-sdk"
 repository = "https://github.com/truth-linked/truthlinked-sdk"
 keywords = ["blockchain", "smart-contract", "wasm", "sdk", "truthlinked"]
+exclude = [
+    "target/**",
+    "fuzz/**",
+    "Cargo.lock",
+]
 
 [lib]
 crate-type = ["rlib"]

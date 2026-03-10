@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"enum":["OracleStatus"],"fn":["body_utf8","http_call","http_get","http_post"],"struct":["OracleResponse"]};
