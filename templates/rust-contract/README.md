@@ -12,5 +12,5 @@ Dependency:
 
 ```toml
 [dependencies]
-truthlinked-sdk = "0.1.0"
+truthlinked-sdk = "0.1.1"
 ```
